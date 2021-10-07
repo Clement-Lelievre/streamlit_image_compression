@@ -14,7 +14,7 @@ st.set_page_config(
 
 st.title('Image compression with Machine Learning 🖼️')
 nb_colors = st.sidebar.slider("Choose number of colours",min_value=1,max_value=30,value=2, step=1, help='The number of colours your image will contain')
-img = st.file_uploader("Upload image", [".png", ".jpg"])
+img = st.file_uploader("Upload image", [".png", ".jpg",".jpeg"])
 placeholder = st.empty()
 if img:
     img = mpimg.imread(save_image(img))
