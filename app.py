@@ -22,11 +22,8 @@ if img:
     img = mpimg.imread(save_image(img))
     img_shape = img.shape
     X = img.reshape(img_shape[0] * img_shape[1], img_shape[2])
-    kmeans = KMeans(n_clusters= nb_colors)
     with st.spinner(f'Clustering on {nb_colors} colors...'):
-        kmeans.fit(X)
-        centers = kmeans.cluster_centers_
-        labels = kmeans.labels_
+        centers, labels = fit_kmeans_image(X, nb_colors)
         X_compressed = centers[labels] # numpy vectorized way
         X_compressed = X_compressed.astype('uint8')
         img_compressed = X_compressed.reshape(img_shape[0], img_shape[1], img_shape[2])
